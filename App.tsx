@@ -1,6 +1,8 @@
 
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
+import Router from './src/Router';
+// import {createStackNavigator,createAppContainer} from 'react-navigation';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -8,18 +10,20 @@ const instructions = Platform.select({
     'Double tap R on your keyboard to reload,\n' +
     'Shake or press menu button for dev menu',
 });
+
+
 interface Props { }
 export default class App extends Component<Props> {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.tsx</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-      </View>
+      <Router/>
     );
   }
 }
+// const AppStackNavigator=createStackNavigator({
+//   Login:App
+// });
+// createAppContainer(AppStackNavigator);
 
 const styles = StyleSheet.create({
   container: {
