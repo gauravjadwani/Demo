@@ -5,7 +5,8 @@ import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 import React from 'react';
 
 import Login from './screens/Login';
-
+import Register from './screens/RegisterScreen';
+import Home from './screens/Home';
 
 
 // interface Style {
@@ -14,11 +15,23 @@ import Login from './screens/Login';
 
 const RouterComponent = () => {
   return (
-    <Router titleStyle={styles.titleStyle}>
+    <Router>
       <Stack key="root">
         <Scene
           key="splash"
           component={Login}
+          hideTabBar
+          hideNavBar={true}
+        />
+        <Scene
+          key="sfssfs"
+          component={Register}
+          hideTabBar
+          hideNavBar={true}
+        />
+        <Scene
+          key="home"
+          component={Home}
           hideTabBar
           hideNavBar={true}
         />

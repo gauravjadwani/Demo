@@ -2,6 +2,10 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import Router from './src/Router';
+import configureStore from './src/store/index';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+import { applyMiddleware } from 'redux';
 // import {createStackNavigator,createAppContainer} from 'react-navigation';
 
 const instructions = Platform.select({
@@ -11,12 +15,14 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
-
+const store = configureStore(applyMiddleware(thunk));
 interface Props { }
 export default class App extends Component<Props> {
   render() {
     return (
+      <Provider store={store}>
       <Router/>
+      </Provider>
     );
   }
 }

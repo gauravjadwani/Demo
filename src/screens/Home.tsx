@@ -8,7 +8,7 @@ import {
 
 interface Props { }
 
-export default class Register extends Component<Props> {
+export default class Home extends Component<Props> {
     render() {
         return (
             <Container>
@@ -16,7 +16,7 @@ export default class Register extends Component<Props> {
                 <Content padder>
                     <Card style={styles.cardStyle}>
                         <CardItem header style={styles.cardText}>
-                            <Text >Register</Text>
+                            <Text >Home</Text>
                         </CardItem>
                         <CardItem>
                             <Item>

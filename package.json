@@ -10,7 +10,10 @@
     "native-base": "^2.12.1",
     "react": "16.8.3",
     "react-native": "0.59.8",
-    "react-native-router-flux": "^4.0.6"
+    "react-native-router-flux": "^4.0.6",
+    "redux": "^4.0.1",
+    "react-redux": "^7.0.3",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
@@ -30,7 +33,9 @@
     "metro-react-native-babel-preset": "^0.54.1",
     "prettier": "^1.17.1",
     "react-test-renderer": "16.8.3",
-    "typescript": "^3.4.5"
+    "typescript": "^3.4.5",
+    "@types/react-redux": "^7.0.9",
+    "@types/redux-thunk": "^2.1.0"
   },
   "jest": {
     "preset": "react-native"

@@ -1,15 +1,34 @@
-
+import { Reducer } from 'redux';
+import { connect } from 'react-redux';
+// import {
+//   verifyClient,
+// } from '../actions/Login';
 import React, { Component } from 'react';
 import { StyleSheet ,View} from 'react-native';
 import {
     Container, Header, Content, Item, Input,
     Icon, Card, CardItem, Text, Button
 } from 'native-base';
-
+import {verifyClient} from './../Actions/Login';
 interface Props { }
 
-export default class Login extends Component<Props> {
+class Login extends Component<Props> {
+    state={
+        email:'',
+        password:''
+    }
+    // constructor(props:Props){
+    //     super(props);
+    //     this.setState={
+
+    //     }
+    // }
+    handlePress=()=>{
+        console.log("pressed",this.state)
+        this.props.verifyClient(this.state);
+    }
     render() {
+        console.log("presdddwsed",this.state.email)
         return (
             <Container>
                 <Header />
@@ -20,19 +39,22 @@ export default class Login extends Component<Props> {
                         </CardItem>
                         <CardItem>
                             <Item>
-                                <Icon active name='home' />
-                                <Input placeholder='Icon Textbox' />
+                                <Icon active name='mail' type="Entypo"/>
+                                <Input placeholder='Email' value={this.state.email} 
+                                onChangeText={email => this.setState({ email })}/>
                             </Item>
                         </CardItem>
                         <CardItem>
                             <Item>
-                                <Input placeholder='Icon Alignment in Textbox' />
+                                <Icon type="Entypo" active name='keyboard' />
+                                <Input secureTextEntry={true} placeholder='Password' 
+                                onChangeText={password => this.setState({ password })}/>
                                 <Icon active name='swap' />
                             </Item>
                         </CardItem>
                         <CardItem>
                             <View style={styles.buttonParent}>
-                            <Button bordered>
+                            <Button bordered onPress={this.handlePress}>
                                 <Text>Primary</Text>
                             </Button>
                             </View>
@@ -74,3 +96,23 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     }
 });
+
+const mapStatetoProps = ({
+    Login,
+
+  }) => {
+    const {
+
+    } = Login;
+    // const { details } = ClientDetails;
+    // const { loginNotification } = Notification;
+    return {
+    };
+  };
+  
+  export default connect(
+    mapStatetoProps,
+    {
+      verifyClient,
+    }
+  )(Login);
