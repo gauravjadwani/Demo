@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
         marginBottom: 5,
     },
     cardStyle: {
-        marginTop: 200
+        marginTop: '50%'
     },
     cardText: {
         justifyContent: 'center',
