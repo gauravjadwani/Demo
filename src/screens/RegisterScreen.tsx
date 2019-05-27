@@ -6,26 +6,32 @@ import {
     Container, Header, Content, Item, Input,
     Label, Card, CardItem, Text, Button
 } from 'native-base';
-import {registerClient,openLoginScreen} from './../Actions/Register';
+import { registerClient, openLoginScreen } from './../Actions/Register';
+import Toast from 'react-native-easy-toast';
 interface Props { }
 
 class Register extends Component<Props> {
-    state={
-        email:'',
-        password:'',
-        confirmPassword:''
+    state = {
+        email: '',
+        password: '',
+        confirmPassword: ''
     }
-    handlePress=()=>{
-        console.log("pressed",this.state)
-        if(this.state.password === this.state.confirmPassword){
-            let {email,password}=this.state;
-            this.props.registerClient({email,password});
-        }
-        
+    handlePress = () => {
+        console.log("pressed", this.state)
+        // if(this.state.password === this.state.confirmPassword){
+        //     let {email,password}=this.state;
+        //     this.props.registerClient({email,password});
+        // }
+        this.refs.toast.show('hello world!');
+
     }
     render() {
         return (
             <Container>
+                <Toast ref="toast" position='top'
+                    positionValue={500}
+                    fadeInDuration={750}
+                    fadeOutDuration={1000} />
                 <Content padder>
                     <Card style={styles.cardStyle}>
                         <CardItem header style={styles.cardText}>
@@ -34,23 +40,23 @@ class Register extends Component<Props> {
                         <CardItem>
                             <Item floatingLabel>
                                 <Label>Email</Label>
-                                <Input value={this.state.email} 
-                                onChangeText={email => this.setState({ email })}/>
+                                <Input value={this.state.email}
+                                    onChangeText={email => this.setState({ email })} />
                             </Item>
 
                         </CardItem>
                         <CardItem>
                             <Item floatingLabel>
                                 <Label>Password</Label>
-                                <Input secureTextEntry={true} value={this.state.password} 
-                                onChangeText={password => this.setState({ password })}/>
+                                <Input secureTextEntry={true} value={this.state.password}
+                                    onChangeText={password => this.setState({ password })} />
                             </Item>
                         </CardItem>
                         <CardItem>
                             <Item floatingLabel>
                                 <Label>Confirm Password</Label>
-                                <Input secureTextEntry={true} value={this.state.confirmPassword} 
-                                onChangeText={confirmPassword => this.setState({ confirmPassword })}/>
+                                <Input secureTextEntry={true} value={this.state.confirmPassword}
+                                    onChangeText={confirmPassword => this.setState({ confirmPassword })} />
                             </Item>
                         </CardItem>
                         <CardItem>
@@ -74,22 +80,6 @@ class Register extends Component<Props> {
     }
 }
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#F5FCFF',
-    },
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10,
-    },
-    instructions: {
-        textAlign: 'center',
-        color: '#333333',
-        marginBottom: 5,
-    },
     cardStyle: {
         marginTop: '50%'
     },
@@ -108,7 +98,7 @@ const styles = StyleSheet.create({
 const mapStatetoProps = ({
     Register,
 
-  }) => {
+}) => {
     const {
 
     } = Register;
@@ -116,12 +106,12 @@ const mapStatetoProps = ({
     // const { loginNotification } = Notification;
     return {
     };
-  };
-  
-  export default connect(
+};
+
+export default connect(
     mapStatetoProps,
     {
         registerClient,
         openLoginScreen
     }
-  )(Register);
+)(Register);

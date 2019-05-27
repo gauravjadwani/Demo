@@ -3,7 +3,7 @@ import { Reducer } from 'redux';
 //     VERIFY_CLIENT,
 // } from '../actions/CharacterActions';
 
-import {VERIFY_CLIENT,LoginActionTypes,LoginState} from '../constants/types';
+import {VERIFY_CLIENT,VERIFY_CLIENT_ERROR,LoginActionTypes,LoginState} from '../constants/types';
 
 // // Define the Character type
 // export interface ICharacter {
@@ -38,6 +38,12 @@ const LoginReducer: Reducer<LoginState, LoginActionTypes> = (
         ...state,
         email: action.payload.email,
         password: action.payload.password,
+      };
+    }
+    case VERIFY_CLIENT_ERROR: {
+      return {
+        ...state,
+        error:action.payload
       };
     }
     default:

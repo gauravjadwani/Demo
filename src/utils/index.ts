@@ -23,7 +23,7 @@ export async function setStorage(key:string,data:Object) {
         console.log('valiue',value)
         if (value !== null) {
           // We have data!!
-          console.log(value);
+        //   console.log(value);
           return JSON.parse(value);
         }else{
             return value;
