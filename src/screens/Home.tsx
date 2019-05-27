@@ -12,7 +12,6 @@ export default class Home extends Component<Props> {
     render() {
         return (
             <Container>
-                <Header />
                 <Content padder>
                     <Card style={styles.cardStyle}>
                         <CardItem header style={styles.cardText}>

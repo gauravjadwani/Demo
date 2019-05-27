@@ -1,39 +1,18 @@
 import { Reducer } from 'redux';
-// import {
-//     VERIFY_CLIENT,
-// } from '../actions/CharacterActions';
+import {REGISTER_CLIENT,RegisterActionTypes,RegisterState} from '../constants/types';
 
-import {VERIFY_CLIENT,LoginActionTypes,LoginState} from '../constants/types';
-
-// // Define the Character type
-// export interface ICharacter {
-//   email: string;
-//   password: string;
-//   isVerified: boolean;
-// }
-
-// // Define the Character State
-// export interface ICharacterState {
-//   readonly characters: ICharacter[];
-// }
-
-// Define the initial state
-// const initialState: LoginState = {
-//   login: [],
-// };
-const initialState: LoginState = {
+const initialState: RegisterState = {
     email:'',
     password:'',
-    error:'',
-    loggedIn:false
+    isRegistered:false
   }
-const LoginReducer: Reducer<LoginState, LoginActionTypes> = (
+const RegisterReducer: Reducer<RegisterState, RegisterActionTypes> = (
   state = initialState,
   action
 ) => {
   console.log('ac',action);
   switch (action.type) {
-    case VERIFY_CLIENT: {
+    case REGISTER_CLIENT: {
       return {
         ...state,
         email: action.payload.email,
@@ -44,7 +23,7 @@ const LoginReducer: Reducer<LoginState, LoginActionTypes> = (
       return state;
   }
 };
-export default LoginReducer;
+export default RegisterReducer;
 
 // const initialCharacterState: ICharacterState = {
 //     characters: [],

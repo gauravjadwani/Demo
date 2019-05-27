@@ -17,23 +17,22 @@ const RouterComponent = () => {
   return (
     <Router>
       <Stack key="root">
-        <Scene
-          key="splash"
-          component={Login}
-          hideTabBar
-          hideNavBar={true}
-        />
-        <Scene
-          key="sfssfs"
+      <Scene
+          key="register"
           component={Register}
           hideTabBar
-          hideNavBar={true}
+          hideNavBar={false}
+        />
+        <Scene
+          key="login"
+          component={Login}
+          hideTabBar
+          hideNavBar={false}
         />
         <Scene
           key="home"
           component={Home}
-          hideTabBar
-          hideNavBar={true}
+          hideNavBar={false}
         />
       </Stack>
     </Router>

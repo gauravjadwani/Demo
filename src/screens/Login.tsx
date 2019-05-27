@@ -17,12 +17,6 @@ class Login extends Component<Props> {
         email:'',
         password:''
     }
-    // constructor(props:Props){
-    //     super(props);
-    //     this.setState={
-
-    //     }
-    // }
     handlePress=()=>{
         console.log("pressed",this.state)
         this.props.verifyClient(this.state);
@@ -31,7 +25,6 @@ class Login extends Component<Props> {
         console.log("presdddwsed",this.state.email)
         return (
             <Container>
-                <Header />
                 <Content padder>
                     <Card style={styles.cardStyle}>
                         <CardItem header style={styles.cardText}>

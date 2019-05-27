@@ -1,40 +1,70 @@
 
 import React, { Component } from 'react';
-import { StyleSheet ,View} from 'react-native';
+import { connect } from 'react-redux';
+import { StyleSheet, View } from 'react-native';
 import {
     Container, Header, Content, Item, Input,
-    Icon, Card, CardItem, Text, Button
+    Label, Card, CardItem, Text, Button
 } from 'native-base';
-
+import {registerClient,openLoginScreen} from './../Actions/Register';
 interface Props { }
 
-export default class Register extends Component<Props> {
+class Register extends Component<Props> {
+    state={
+        email:'',
+        password:'',
+        confirmPassword:''
+    }
+    handlePress=()=>{
+        console.log("pressed",this.state)
+        if(this.state.password === this.state.confirmPassword){
+            let {email,password}=this.state;
+            this.props.registerClient({email,password});
+        }
+        
+    }
     render() {
         return (
             <Container>
-                <Header />
                 <Content padder>
                     <Card style={styles.cardStyle}>
                         <CardItem header style={styles.cardText}>
                             <Text >Register</Text>
                         </CardItem>
                         <CardItem>
-                            <Item>
-                                <Icon active name='home' />
-                                <Input placeholder='Icon Textbox' />
+                            <Item floatingLabel>
+                                <Label>Email</Label>
+                                <Input value={this.state.email} 
+                                onChangeText={email => this.setState({ email })}/>
+                            </Item>
+
+                        </CardItem>
+                        <CardItem>
+                            <Item floatingLabel>
+                                <Label>Password</Label>
+                                <Input secureTextEntry={true} value={this.state.password} 
+                                onChangeText={password => this.setState({ password })}/>
                             </Item>
                         </CardItem>
                         <CardItem>
-                            <Item>
-                                <Input placeholder='Icon Alignment in Textbox' />
-                                <Icon active name='swap' />
+                            <Item floatingLabel>
+                                <Label>Confirm Password</Label>
+                                <Input secureTextEntry={true} value={this.state.confirmPassword} 
+                                onChangeText={confirmPassword => this.setState({ confirmPassword })}/>
                             </Item>
                         </CardItem>
                         <CardItem>
                             <View style={styles.buttonParent}>
-                            <Button bordered>
-                                <Text>Primary</Text>
-                            </Button>
+                                <Button bordered onPress={this.handlePress}>
+                                    <Text>Submit</Text>
+                                </Button>
+                            </View>
+                        </CardItem>
+                        <CardItem>
+                            <View style={styles.buttonParent}>
+                                <Button bordered onPress={this.props.openLoginScreen}>
+                                    <Text>Login</Text>
+                                </Button>
                             </View>
                         </CardItem>
                     </Card>
@@ -67,10 +97,31 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-    buttonParent:{
-        flex:1,
-        flexDirection:'row',
+    buttonParent: {
+        flex: 1,
+        flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center'
     }
 });
+
+const mapStatetoProps = ({
+    Register,
+
+  }) => {
+    const {
+
+    } = Register;
+    // const { details } = ClientDetails;
+    // const { loginNotification } = Notification;
+    return {
+    };
+  };
+  
+  export default connect(
+    mapStatetoProps,
+    {
+        registerClient,
+        openLoginScreen
+    }
+  )(Register);
