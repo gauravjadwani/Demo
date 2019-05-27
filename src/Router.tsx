@@ -20,7 +20,6 @@ const RouterComponent = () => {
         <Scene
           key="register"
           component={Register}
-          hideTabBar
           hideNavBar={false}
         />
         <Scene key="home" component={Home} hideNavBar={false} />

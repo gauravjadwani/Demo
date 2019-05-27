@@ -18,11 +18,11 @@ class Register extends Component<Props> {
     }
     handlePress = () => {
         console.log("pressed", this.state)
-        // if(this.state.password === this.state.confirmPassword){
-        //     let {email,password}=this.state;
-        //     this.props.registerClient({email,password});
-        // }
-        this.refs.toast.show('hello world!');
+        if(this.state.password === this.state.confirmPassword){
+            let {email,password}=this.state;
+            this.props.registerClient({email,password});
+        }
+        // this.refs.toast.show('hello world!');
 
     }
     render() {
