@@ -7,8 +7,15 @@
     "test": "jest"
   },
   "dependencies": {
+    "native-base": "^2.12.1",
     "react": "16.8.3",
-    "react-native": "0.59.8"
+    "react-native": "0.59.8",
+    "react-native-easy-toast": "^1.2.0",
+    "react-native-linear-gradient": "^2.5.4",
+    "react-native-router-flux": "^4.0.6",
+    "react-redux": "^7.0.3",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
@@ -17,11 +24,20 @@
     "@types/react": "^16.8.18",
     "@types/react-native": "^0.57.60",
     "@types/react-test-renderer": "^16.8.1",
+    "@typescript-eslint/eslint-plugin": "^1.9.0",
+    "@typescript-eslint/parser": "^1.9.0",
     "babel-jest": "^24.8.0",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.13.0",
     "jest": "^24.8.0",
     "metro-react-native-babel-preset": "^0.54.1",
+    "prettier": "^1.17.1",
     "react-test-renderer": "16.8.3",
-    "typescript": "^3.4.5"
+    "typescript": "^3.4.5",
+    "@types/react-redux": "^7.0.9",
+    "@types/redux-thunk": "^2.1.0"
   },
   "jest": {
     "preset": "react-native"
