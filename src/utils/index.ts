@@ -1,10 +1,11 @@
 import {AsyncStorage} from "react-native";
 
-export async function setStorage(key:string,data:Object) {
+export async function setStorage(key:string,data:any) {
     console.log('setstaorage',key,data)
+    // AsyncStorage.clear();
     // AsyncStorage.setItem(key, JSON.stringify(data));
     try {
-        await AsyncStorage.setItem(key, JSON.stringify(data));
+        await AsyncStorage.setItem(key,(data));
         return true;
       } catch (error) {
         // Error saving data
@@ -13,18 +14,13 @@ export async function setStorage(key:string,data:Object) {
   }
 
   export async function getStorage(key:string) {
-    // AsyncStorage.getItem(key);
-    // for(let i=0;i<100;i++){
-    //     console.log(i);
-    // }
-    // AsyncStorage.clear();
     try {
         const value = await AsyncStorage.getItem(key);
-        console.log('valiue',value)
+        console.log('getStorage value',value,key)
         if (value !== null) {
           // We have data!!
         //   console.log(value);
-          return JSON.parse(value);
+          return (value);
         }else{
             return value;
         }
@@ -33,3 +29,32 @@ export async function setStorage(key:string,data:Object) {
         // Error retrieving data
       }
   }
+  export async function createUserSession(user:string){
+
+    const state = await setStorage('currentActiveUser',user);
+    console.log('createUserSession',state)
+    return state;
+  }
+  export async function getUserSession(){
+   
+    // let state;
+    const state= await getStorage('currentActiveUser')
+    console.log('getStorage',state);
+    return state;
+  }
+
+  export  function getUserSession1(){
+      const state=AsyncStorage.getItem('currentActiveUser');   
+    console.log('getStorage',state);
+    return state;
+  }
+  export async function deleteUserSessions(key:string){
+    try {
+      await AsyncStorage.removeItem(key);
+      return true;
+    }
+    catch(exception) {
+      return false;
+    }
+
+}

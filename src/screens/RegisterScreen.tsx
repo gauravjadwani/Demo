@@ -7,6 +7,7 @@ import {
     Label, Card, CardItem, Text, Button
 } from 'native-base';
 import { registerClient, openLoginScreen } from './../Actions/Register';
+
 import Toast from 'react-native-easy-toast';
 interface Props { }
 

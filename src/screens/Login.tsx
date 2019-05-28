@@ -9,38 +9,56 @@ import {
     Container, Header, Content, Item, Input,
     Icon, Card, CardItem, Text, Button
 } from 'native-base';
-import { verifyClient ,openRegisterScreen } from './../Actions/Login';
+import { verifyClient, openRegisterScreen ,cleartLoginState ,openHomeScreen ,verifyClientSession} from './../Actions/Login';
 import Toast from 'react-native-easy-toast';
 import LinearGradient from 'react-native-linear-gradient';
+// import { getUserSession} from './../utils';
+// import { func } from 'prop-types';
 
 interface Props { }
 
 class Login extends Component<Props> {
-    state = {
-        email: '',
-        password: ''
+
+    constructor(props:Props){
+        super(props);
+        this.state = {
+            email: '',
+            password: '',
+            isUsersession: false
+        }
     }
     handlePress = () => {
-        console.log("pressed", this.state)
+        console.log("handlePress login.tsx", this.state)
         this.props.verifyClient(this.state);
 
     }
+    componentDidMount(){
+        this.props.verifyClientSession();
+    }
     render() {
-        // console.log("presdddwsed", this.props.error);
+        // AsyncStorage.clear();
+        // const play=getUserSession();
+        // console.log("stateee", play);
         // if (this.props.error) {
         //     this.refs.toast.show(this.props.error);
+        //     this.props.cleartLoginState();
+        // }
+        // if(this.props.loggedIn){
+        //     console.log('isUsersession',this.state.isUsersession)
+        //     this.props.openHomeScreen();
         // }
         return (
             <Container>
+                <Toast ref="toast" position='top'
+                    positionValue={500}
+                    fadeInDuration={750}
+                    fadeOutDuration={1000} />
                 <LinearGradient
                     style={{ backgroundColor: 'black', flex: 1 }}
                     colors={['#e4eef0', '#f7e9d5']}
                     start={{ x: 1, y: 0 }}
                     end={{ x: 0, y: 0 }}>
-                    <Toast ref="toast" position='top'
-                        positionValue={500}
-                        fadeInDuration={750}
-                        fadeOutDuration={1000} />
+
                     <Content padder style={styles.contentStyle}>
                         <Card style={styles.cardStyle}>
                             <CardItem header style={styles.cardText}>
@@ -85,22 +103,22 @@ class Login extends Component<Props> {
 const styles = StyleSheet.create({
     cardStyle: {
         marginTop: '50%',
-        backgroundColor:"transparent"
+        backgroundColor: "transparent"
     },
     cardText: {
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor:"transparent"
+        backgroundColor: "transparent"
     },
     buttonParent: {
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor:"transparent"
+        backgroundColor: "transparent"
     },
-    contentStyle:{
-       
+    contentStyle: {
+
     }
 });
 
@@ -109,12 +127,14 @@ const mapStatetoProps = ({
 
 }) => {
     const {
-        error
+        error,
+        loggedIn
     } = Login;
     // const { details } = ClientDetails;
     // const { loginNotification } = Notification;
     return {
-        error
+        error,
+        loggedIn
     };
 };
 
@@ -122,6 +142,9 @@ export default connect(
     mapStatetoProps,
     {
         verifyClient,
-        openRegisterScreen
+        openRegisterScreen,
+        cleartLoginState,
+        openHomeScreen,
+        verifyClientSession
     }
 )(Login);
