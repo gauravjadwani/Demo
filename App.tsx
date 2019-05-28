@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
-import Router from './src/Router';
+import RouterComponnet from './src/Router';
 import configureStore from './src/store/index';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
@@ -22,7 +22,7 @@ export default class App extends Component<Props> {
   render() {
     return (
       <Provider store={store}>
-      <Router/>
+      <RouterComponnet/>
       </Provider>
     );
   }

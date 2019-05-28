@@ -11,10 +11,6 @@ export const  registerClient = (newRegisterState:RegisterState) => {
     const data={};
     let email=newRegisterState.email
     data[email]=newRegisterState.password;
-    // AsyncStorage.clear();
-    // return true;
-    // data.password=;
-    // const {email,password}=newRegisterState;
     let value= await getStorage('users');
     if(value === null){
         setStorage('users',JSON.stringify(data));
@@ -23,8 +19,7 @@ export const  registerClient = (newRegisterState:RegisterState) => {
         const newData={...value,...data};
         setStorage('users',JSON.stringify(newData));
     }
-    console.log('inside register actions',newRegisterState,value);
-    Actions.protected();
+    Actions.login();
     dispatch({
         type: REGISTER_CLIENT,
         payload: newRegisterState,
@@ -33,12 +28,6 @@ export const  registerClient = (newRegisterState:RegisterState) => {
   };
   export const openLoginScreen = () => {
     return (dispatch:Dispatch) => {
-    //   const ref = database.ref();
-    // console.log('inside register actions',newRegisterState);
     Actions.login();
-    // dispatch({
-    //     type: REGISTER_CLIENT,
-    //     payload: newRegisterState,
-    //   });
     };
   };

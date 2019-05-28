@@ -1,8 +1,4 @@
-import { Reducer } from 'redux';
 import { connect } from 'react-redux';
-// import {
-//   verifyClient,
-// } from '../actions/Login';
 import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
 import {
@@ -12,8 +8,6 @@ import {
 import { verifyClient, openRegisterScreen ,cleartLoginState ,openHomeScreen ,verifyClientSession} from './../Actions/Login';
 import Toast from 'react-native-easy-toast';
 import LinearGradient from 'react-native-linear-gradient';
-// import { getUserSession} from './../utils';
-// import { func } from 'prop-types';
 
 interface Props { }
 
@@ -36,17 +30,10 @@ class Login extends Component<Props> {
         this.props.verifyClientSession();
     }
     render() {
-        // AsyncStorage.clear();
-        // const play=getUserSession();
-        // console.log("stateee", play);
-        // if (this.props.error) {
-        //     this.refs.toast.show(this.props.error);
-        //     this.props.cleartLoginState();
-        // }
-        // if(this.props.loggedIn){
-        //     console.log('isUsersession',this.state.isUsersession)
-        //     this.props.openHomeScreen();
-        // }
+        if (this.props.error) {
+            this.refs.toast.show(this.props.error);
+            this.props.cleartLoginState();
+        }
         return (
             <Container>
                 <Toast ref="toast" position='top'
@@ -76,7 +63,6 @@ class Login extends Component<Props> {
                                     <Icon type="Entypo" active name='keyboard' />
                                     <Input secureTextEntry={true} placeholder='Password'
                                         onChangeText={password => this.setState({ password })} />
-                                    <Icon active name='swap' />
                                 </Item>
                             </CardItem>
                             <CardItem style={{ backgroundColor: "transparent" }}>
@@ -130,8 +116,6 @@ const mapStatetoProps = ({
         error,
         loggedIn
     } = Login;
-    // const { details } = ClientDetails;
-    // const { loginNotification } = Notification;
     return {
         error,
         loggedIn

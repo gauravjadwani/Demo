@@ -31,7 +31,7 @@ const LoginReducer: Reducer<LoginState, LoginActionTypes> = (
   state = initialState,
   action
 ) => {
-  console.log('ac',action);
+  console.log('action',action,state);
   switch (action.type) {
     case VERIFY_CLIENT: {
       return {

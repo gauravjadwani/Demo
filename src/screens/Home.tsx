@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
 import {
   Container,
-  Header,
   Content,
   Footer,
   FooterTab,
@@ -10,19 +8,14 @@ import {
   Button,
 } from 'native-base';
 import { connect } from 'react-redux';
-import {deleteUserSession } from './../Actions/Login';
+import {deleteUserSession} from './../Actions/Login';
 import {AsyncStorage} from "react-native";
-import { func } from 'prop-types';
 interface Props {}
 
 class Home extends Component<Props> {
   handlePress=()=>{
-    // console.log('fefffffffff');
-    // AsyncStorage.clear();
-    // AsyncStorage.getAllKeys().then(function(ff){
-    //   console.log('fffff',ff)
-    // })
-    this.props.deleteUserSession(this.props.email);
+    AsyncStorage.clear();
+    this.props.deleteUserSession('Gaurav');
   }
   render() {
     console.log('lololo',this.props)
@@ -62,8 +55,6 @@ const mapStatetoProps = ({
     const {
       email
     } = Login;
-    // const { details } = ClientDetails;
-    // const { loginNotification } = Notification;
     return {
       email
     };

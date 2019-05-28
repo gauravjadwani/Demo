@@ -1,21 +1,9 @@
 import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
-import {
-  Container,
-  Header,
-  Content,
-  Footer,
-  FooterTab,
-  Text,
-  Button,
-} from 'native-base';
 import { connect } from 'react-redux';
 import {verifyClientSession } from './../Actions/Login';
-import {AsyncStorage} from "react-native";
-import { func } from 'prop-types';
 import Login from './Login';
 import Home from './Home';
-import { Scene, Router, Stack } from 'react-native-router-flux';
+import { Scene} from 'react-native-router-flux';
 interface Props {}
 
 
@@ -39,8 +27,6 @@ const mapStatetoProps = ({
     const {
         loggedIn
     } = Login;
-    // const { details } = ClientDetails;
-    // const { loginNotification } = Notification;
     return {
         loggedIn
     };
